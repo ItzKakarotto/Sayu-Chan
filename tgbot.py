@@ -18,7 +18,7 @@ keyboard = ikb([
     [('Add Me', f"http://t.me/SayuChan_Robot?startgroup=true", 'url')]
 ])
 
-txt = [
+TEXTS = [
 "I'm Alive OwO!",
 "Hewwo Senpai",
 "*peeks*"
@@ -37,7 +37,7 @@ async def rstart(_, message):
 async def start(_, message):
     chat_id = message.chat.id
     await app.send_chat_action(message.chat.id, 'typing')
-    await app.send_message(chat_id, random.choice(txt))
+    await app.send_message(chat_id, random.choice(TEXTS))
 
 @app.on_message(filters.new_chat_members)
 async def welcome(_, message):
