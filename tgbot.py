@@ -25,7 +25,7 @@ TEXTS = [
 @app.on_message(filters.private)
 async def rstart(_, message):
     text = f"*Hewwo ~{message.from_user.first_name}-Kun!* I'm Sayu[\u2063](https://telegra.ph/file/c330dd3c5770ae2da66c1.jpg)\nAdd me to Groups and I'll welcome new Members OwO!"
-    await message.reply_text(text, reply_markup=keyboard)
+    await message.reply_text(text, reply_markup=keyboard, parse_mode = "md")
 
 @app.on_message(filters.command('start') & filters.regex('sayu') & ~filters.private)
 async def start(_, message):
