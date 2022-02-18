@@ -35,7 +35,7 @@ async def rstart(_, message):
     await message.reply_text(text, reply_markup=keyboard)
 
 @app.on_message(filters.command('start') & filters.regex('sayu'))
-async def _owo(_, message):
+async def start(_, message):
     chat_id = message.chat.id
     await app.send_message(chat_id, random.choice(txt))
 
