@@ -24,7 +24,6 @@ txt = [
 ]
 
 
-
 #def _gif(chatname, username):
 
 
