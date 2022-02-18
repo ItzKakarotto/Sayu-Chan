@@ -5,7 +5,7 @@ import random
 
 ID = int(os.environ.get('ID'))
 HASH = os.environ.get('HASH')
-TOKEN = os.environ.get('TOKEN)
+TOKEN = os.environ.get('TOKEN')
 
 gif = "utils/sayu.gif"
 fnt = "utils/dafont.ttf"
