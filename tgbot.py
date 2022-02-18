@@ -38,4 +38,4 @@ async def start(_, message):
     await app.send_chat_action(message.chat.id, 'typing')
     await app.send_message(chat_id, random.choice(txt))
 
-
+app.run()
