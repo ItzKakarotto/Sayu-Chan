@@ -8,9 +8,6 @@ ID = int(os.environ.get('ID'))
 HASH = os.environ.get('HASH')
 TOKEN = os.environ.get('TOKEN')
 
-gif = Image.open("utils/sayu.gif")
-txt = Image.new("RGBA", gif.size)
-
 app = Client('bot',api_id=ID,api_hash=HASH,bot_token=TOKEN)
 
 keyboard = ikb([
@@ -45,6 +42,10 @@ async def welcome(_, message):
     chat_id = message.chat.id
     username = user.first_name
     chatname = message.chat.title
+
+    gif = Image.open("utils/sayuchan.gif")
+    txt = Image.new("RGBA", gif.size)
+
     if len(chatname)>16:
         try:
             chatname = chatname.split(" ", 1)[0]
@@ -55,14 +56,14 @@ async def welcome(_, message):
  
     ft = 200
     f = ft//len(text)
-    fnt = ImageFont.truetype("utils/dafont.ttf", 20+f)
+    fnt = ImageFont.truetype("utils/dafont.ttf", 18+f)
 
-    ImageDraw.Draw(txt).text((60+f*18, 410), text, font=fnt,fill=(255, 255, 255), stroke_width=1, stroke_fill='black')
+    ImageDraw.Draw(txt).text((35+f*10, 300), text, font=fnt,fill=(255, 255, 255), stroke_width=1, stroke_fill='black')
     
     frames = []
     for frame in ImageSequence.Iterator(gif):
         frame = frame.copy()
-        if len(frames)>40:
+        if len(frames)>20:
             frame.paste(txt, mask=txt)
         frames.append(frame)
         
