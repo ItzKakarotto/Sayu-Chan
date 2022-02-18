@@ -39,3 +39,4 @@ async def start(_, message):
     await app.send_message(chat_id, random.choice(txt))
 
 app.run()
+#deploy
