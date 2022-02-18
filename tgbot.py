@@ -29,13 +29,13 @@ txt = [
 
 @app.on_message(filters.private)
 async def rstart(_, message):
-    await app.send_chat_action(message.chat.id, 'typing')
     text = f"*Hewwo ~{}-Kun!* I'm Sayu[\u2063](https://telegra.ph/file/c330dd3c5770ae2da66c1.jpg)\nAdd me to Groups OwO and I'll welcome new Users OwO!"
     await message.reply_text(text, reply_markup=keyboard)
 
 @app.on_message(filters.command('start') & filters.regex('sayu'))
 async def start(_, message):
     chat_id = message.chat.id
+    await app.send_chat_action(message.chat.id, 'typing')
     await app.send_message(chat_id, random.choice(txt))
 
 
