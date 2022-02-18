@@ -14,14 +14,8 @@ keyboard = ikb([
     [('Add Me', f"http://t.me/{(await app.get_me()).username}?startgroup=true", 'url')]
 ])
 
-txt = [
-"I'm Alive OwO!",
-"Hewwo Senpai",
-"*peeks*"
-]
 
 #def _gif(chatname, username):
-    
 
 
 @app.on_message(filters.private)
