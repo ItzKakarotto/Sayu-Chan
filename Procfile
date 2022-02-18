@@ -1,1 +1,1 @@
-web python3 -m tgbot
+web: python3 -m tgbot
