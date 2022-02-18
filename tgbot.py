@@ -68,7 +68,7 @@ async def welcome(_, message):
         
     frames[0].save(f"output{chat_id}.gif", save_all=True, append_images=frames[1:])
 
-    message.reply_animation(f"output{chat_id}.gif")
+    await message.reply_animation(f"output{chat_id}.gif", caption=f"Welcome {username}-San!")
 
 
 app.run()
