@@ -27,7 +27,7 @@ async def rstart(_, message):
     text = f"Hewwo ~{message.from_user.first_name}-Kun! I'm Sayu[\u2063](https://telegra.ph/file/c330dd3c5770ae2da66c1.jpg)\nAdd me to Groups and I'll welcome new Members OwO!"
     await message.reply_text(text, reply_markup=keyboard)
 
-@app.on_message(filters.command('start') & filters.regex('sayu') & ~filters.private)
+@app.on_message(filters.group & filters.regex('sayu'))
 async def start(_, message):
     chat_id = message.chat.id
     await app.send_chat_action(message.chat.id, 'typing')
@@ -40,7 +40,7 @@ async def welcome(_, message):
     username = user.first_name
     chatname = message.chat.title
 
-    gif = Image.open("utils/sayuchan-uncomp.gif")
+    gif = Image.open("utils/sayuchan.gif")
     txt = Image.new("RGBA", gif.size)
 
     if len(chatname)>16:
@@ -64,9 +64,9 @@ async def welcome(_, message):
             frame.paste(txt, mask=txt)
         frames.append(frame)
         
-    frames[0].save(f"output{chat_id}.gif", save_all=True, append_images=frames[1:])
+    frames[0].save(f"output{chat_id}{user.id}.gif", save_all=True, optimize=False, append_images=frames[1:])
 
-    await message.reply_animation(f"output{chat_id}.gif", caption=f"Welcome {username}-San!")
+    await message.reply_animation(f"output{chat_id}{user.id}.gif", caption=f"OwO {username}-san just joined!")
 
 
 app.run()
