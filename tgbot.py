@@ -14,7 +14,7 @@ app = Client('bot',api_id=ID,api_hash=HASH,bot_token=TOKEN)
 
 keyboard = ikb([
     [('Support', 't.me/ShinobuSupport', 'url'), ('Repo', 'github.com/ItzKakarotto/sayu-chan', 'url')],
-    [('Add Me', f"http://t.me/{(await app.get_me()).username}?startgroup=true", 'url')]
+    [('Add Me', f"http://t.me/SayuChan_Robot?startgroup=true", 'url')]
 ])
 
 txt = [
