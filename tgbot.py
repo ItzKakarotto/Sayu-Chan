@@ -7,12 +7,22 @@ ID = int(os.environ.get('ID'))
 HASH = os.environ.get('HASH')
 TOKEN = os.environ.get('TOKEN)
 
+gif = "utils/sayu.gif"
+fnt = "utils/dafont.ttf"
+
 app = Client('bot',api_id=ID,api_hash=HASH,bot_token=TOKEN)
 
 keyboard = ikb([
     [('Support', 't.me/ShinobuSupport', 'url'), ('Repo', 'github.com/ItzKakarotto/sayu-chan', 'url')],
     [('Add Me', f"http://t.me/{(await app.get_me()).username}?startgroup=true", 'url')]
 ])
+
+txt = [
+"I'm Alive OwO!",
+"Hewwo Senpai",
+"*peeks*"
+]
+
 
 
 #def _gif(chatname, username):
