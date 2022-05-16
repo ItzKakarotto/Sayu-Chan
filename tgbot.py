@@ -59,7 +59,7 @@ async def welcome(_, message):
     f = ft//len(text)
     fnt = ImageFont.truetype("utils/dafont.ttf", 18+f)
 
-    ImageDraw.Draw(txt).text((35+f*10, 300), text, font=fnt,fill=(255, 255, 255), stroke_width=1, stroke_fill='black')
+    ImageDraw.Draw(txt).text((30+f*10, 300), text, font=fnt,fill=(255, 255, 255), stroke_width=1, stroke_fill='black')
     
     frames = []
     for frame in ImageSequence.Iterator(gif):
