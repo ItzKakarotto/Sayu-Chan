@@ -1,8 +1,9 @@
+import os
+import random
+import time
 from pyrogram import filters, Client
 from pyromod.helpers import ikb
-import os
 from PIL import Image, ImageDraw, ImageFont, ImageSequence
-import random
 
 ID = int(os.environ.get('ID'))
 HASH = os.environ.get('HASH')
@@ -17,8 +18,9 @@ keyboard = ikb([
 
 TEXTS = [
 "I'm Alive OwO!",
-"Hewwo Senpai",
-"*peeks*"
+"~Hewwo Senpai~",
+"*peeks*",
+"~blushes~"
 ]
 
 
@@ -27,11 +29,13 @@ async def rstart(_, message):
     text = f"Hewwo ~{message.from_user.first_name}-Kun! I'm Sayu[\u2063](https://telegra.ph/file/c330dd3c5770ae2da66c1.jpg)\nAdd me to Groups and I'll welcome new Members OwO!"
     await message.reply_text(text, reply_markup=keyboard)
 
-@app.on_message(filters.group & filters.regex('sayu'))
+@app.on_message(filters.group & filters.regex(['Sayu', 'SAYU', 'sayu']))
 async def start(_, message):
     chat_id = message.chat.id
-    await app.send_chat_action(message.chat.id, 'typing')
+    await app.send_chat_action(chat_id, 'typing')
+    time.sleep(1)
     await app.send_message(chat_id, random.choice(TEXTS))
+
 
 @app.on_message(filters.new_chat_members)
 async def welcome(_, message):
@@ -63,10 +67,14 @@ async def welcome(_, message):
         if len(frames)>20:
             frame.paste(txt, mask=txt)
         frames.append(frame)
-        
+    
     frames[0].save(f"output{chat_id}{user.id}.gif", save_all=True, optimize=False, append_images=frames[1:])
 
-    await message.reply_animation(f"output{chat_id}{user.id}.gif", caption=f"OwO {username}-san just joined!")
+    await message.reply_animation(f"output{chat_id}{user.id}.gif", caption=f"{username}-san just joined!")
 
 
-app.run()
+def main():
+    app.run()
+    app.send_message(720518864, "Hewoo I'm back Senpai!")
+
+main()
