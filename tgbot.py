@@ -29,8 +29,10 @@ async def rstart(_, message):
     text = f"Hewwo ~{message.from_user.first_name}-Kun! I'm Sayu[\u2063](https://telegra.ph/file/c330dd3c5770ae2da66c1.jpg)\nAdd me to Groups and I'll welcome new Members OwO!"
     await message.reply_text(text, reply_markup=keyboard)
 
-@app.on_message(filters.group & filters.regex(['Sayu', 'SAYU', 'sayu']))
+@app.on_message(filters.group & filters.text)
 async def start(_, message):
+    if not "sayu" in message.text.lower():
+        return
     chat_id = message.chat.id
     await app.send_chat_action(chat_id, 'typing')
     time.sleep(1)
